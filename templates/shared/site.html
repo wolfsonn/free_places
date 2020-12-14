@@ -11,16 +11,19 @@
 <body>
 <nav class="nav">
     <div>
-        <i class="fas fa-hospital-symbol"></i>
+{#        <a href="{% url 'index' %}"><i class="fas fa-hospital-symbol"></i></a>#}
         <ul>
             <li>
-                <a class="nav-link" href="">Home</a>
+                <a class="nav-link" href="{% url 'index' %}"><i class="fas">&#xf47e</i>ome</a>
             </li>
             <li>
-                <a class="nav-link" href="">All pet photos</a>
+                <a class="nav-link" href="{% url 'overview' %}">Overview</a>
             </li>
             <li>
-                <a class="nav-link" href="">Add pet photo</a>
+                <a class="nav-link" href="{% url 'cities' %}">Cities</a>
+            </li>
+            <li>
+                <a class="nav-link" href="">Places</a>
             </li>
         </ul>
         <ul>
@@ -47,5 +50,4 @@
     {% endblock %}
 </div>
 </body>
-<script src="https://kit.fontawesome.com/08f4ab4ebb.js" crossorigin="anonymous"></script>
 </html>

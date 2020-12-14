@@ -1,15 +1,15 @@
 from django.shortcuts import render
 
-from places.models import Place
+from places.models import Place, Establishment
 
 
-def overview(request):
-    places = Place.objects.all()
+def establishment(request, pk):
+    establishment = Establishment.objects.get(pk=pk)
+    places = Place.objects.filter()
     green_establishments = set([place.establishment for place in places if place.status == 'vacant'])
     red_establishments = set([place.establishment for place in places if place.status != 'vacant' and place.establishment not in green_establishments])
     context = {
         'places': places,
-        'green_establishments': green_establishments,
-        'red_establishments': red_establishments,
+        'establishment': establishment,
     }
     return render(request, 'overview.html', context)

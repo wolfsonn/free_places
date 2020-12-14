@@ -1,12 +1,12 @@
 {% extends 'shared/site.html' %}
 {% block head_content %}
-    <link rel="stylesheet" href="/static/css/overview.css">
+    <link rel="stylesheet" href="/static/css/cities.css">
 {% endblock %}
 
 {% block site_content %}
-    <h1>Free Places Overview</h1>
+    <h1>{{ city }} Details</h1>
     <section class="establishments">
-        {% for establishment in green_establishments %}
+        {% for establishment in city_establishments %}
             <div class="card">
                 <div class="card-icon">
                     <a href=""></a>
@@ -17,13 +17,13 @@
                 </div>
             </div>
         {% endfor %}
-        {% for establishment in red_establishments %}
+        {% for city in red_cities %}
             <div class="card">
                 <div class="card-icon">
-                    <i class="fas fa-hospital-alt not-vacant"></i>
+                    <i class="fas fa-city not-vacant"></i>
                 </div>
                 <div class="card-text">
-                    {{ establishment }}
+                    {{ city }}
                 </div>
             </div>
         {% endfor %}
