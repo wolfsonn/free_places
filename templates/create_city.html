@@ -1,0 +1,13 @@
+{% extends 'shared/site.html' %}
+{% block head_content %}
+    <link rel="stylesheet" href="/static/css/establishments_cities.css">
+{% endblock %}
+
+{% block site_content %}
+    <h1>Create a City</h1>
+    <form method="POST" action="{% url 'create city' %}">
+            {{ form }}
+            {% csrf_token %}
+            <input type="submit" value="Create">
+        </form>
+{% endblock %}

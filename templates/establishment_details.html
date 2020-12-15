@@ -4,26 +4,26 @@
 {% endblock %}
 
 {% block site_content %}
-    <h1>{{ city }} Details</h1>
-    <section>
-        {% for establishment in city_green_establishments %}
+    <h1>{{ establishment }} Details</h1>
+    <section class="establishments">
+        {% for establishment in city_establishments %}
             <div class="card">
                 <div class="card-icon">
                     <a href=""></a>
-                    <a href="{% url 'establishment details' establishment.id %}"><i class="fas fa-hospital-alt vacant"></i></a>
+                    <i class="fas fa-hospital-alt vacant"></i>
                 </div>
                 <div class="card-text">
                     {{ establishment }}
                 </div>
             </div>
         {% endfor %}
-        {% for establishment in city_red_establishments %}
+        {% for city in red_cities %}
             <div class="card">
                 <div class="card-icon">
-                    <a href="{% url 'establishment details' establishment.id %}"><i class="fas fa-hospital-alt not-vacant"></i></a>
+                    <i class="fas fa-city not-vacant"></i>
                 </div>
                 <div class="card-text">
-                    {{ establishment }}
+                    {{ city }}
                 </div>
             </div>
         {% endfor %}

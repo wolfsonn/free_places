@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url("https://use.fontawesome.com/releases/v5.10.2/css/all.css");
 
+
 body {
-    background: rgb(250, 218, 213);
+    background: rgb(255, 255, 255);
     color: rgb(53, 38, 12);
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
     margin: 0;

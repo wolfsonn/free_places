@@ -1,6 +1,6 @@
 {% extends 'shared/site.html' %}
 {% block head_content %}
-    <link rel="stylesheet" href="/static/css/cities.css">
+    <link rel="stylesheet" href="/static/css/establishments_cities.css">
 {% endblock %}
 
 {% block site_content %}
@@ -26,17 +26,5 @@
                 </div>
             </div>
         {% endfor %}
-{#        {% for place in places %}#}
-{#            {% if place.status == 'vacant' %}#}
-{#                <div class="card">#}
-{#                    <div class="card-icon">#}
-{#                        <i class="fas fa-hospital-alt vacant"></i>#}
-{#                    </div>#}
-{#                    <div class="card-text">#}
-{#                        {{ place.establishment }}#}
-{#                    </div>#}
-{#                </div>#}
-{#            {% endif %}#}
-{#        {% endfor %}#}
     </section>
 {% endblock %}

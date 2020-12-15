@@ -1,0 +1,19 @@
+li {
+    list-style: none;
+}
+
+.vacant {
+    color: green;
+}
+
+.occupied {
+    color: red;
+}
+
+.timeout {
+    color: yellow;
+}
+
+.unknown {
+    color: grey;
+}
