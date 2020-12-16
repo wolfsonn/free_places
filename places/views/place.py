@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect
+from django_tables2 import RequestConfig
 
 from places.forms.place import PlaceForm
-from places.models import Place
+from places.models.place import Place
+from places.tables import PlaceTable
 
 
 def places_list(request):
-    places = Place.objects.all()
+    table = PlaceTable(Place.objects.all())
+    table.paginate(page=request.GET.get("page", 1), per_page=25)
+    RequestConfig(request).configure(table)
     context = {
-        'places': places,
+        'table': table,
     }
     return render(request, 'places_list.html', context)
 
@@ -22,7 +26,7 @@ def create_place(request):
         form = PlaceForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('places_list.html')
+            return redirect('places')
 
         context = {
             'form': form,

@@ -5,13 +5,14 @@
 
 {% block site_content %}
     <h1>Cities Overview</h1>
+    <h4>These are the cities with currently allocated places:</h4>
     <section class="establishments">
         {% for city in green_cities %}
             <div class="card">
                 <div class="card-icon">
                     <a href="{% url 'city details' city.id %}"><i class="fas fa-city vacant"></i></a>
                 </div>
-                <div class="card-text">
+                <div class="card-title">
                     {{ city }}
                 </div>
             </div>
@@ -21,7 +22,7 @@
                 <div class="card-icon">
                     <a href="{% url 'city details' city.id %}"><i class="fas fa-city not-vacant"></i></a>
                 </div>
-                <div class="card-text">
+                <div class="card-title">
                     {{ city }}
                 </div>
             </div>

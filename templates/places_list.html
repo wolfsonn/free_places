@@ -1,13 +1,10 @@
 {% extends 'shared/site.html' %}
+{% load django_tables2 %}
 {% block head_content %}
     <link rel="stylesheet" href="/static/css/places.css">
 {% endblock %}
 
 {% block site_content %}
-    <h1>Places Overview</h1>
-    <section>
-        {% for place in places %}
-            <li><a href="{% url 'place details' place.id %}"><i class="fas fa-procedures {{ place.status }}"></i></a></li>
-        {% endfor %}
-    </section>
+        <h1>Places Overview</h1>
+    {% render_table table %}
 {% endblock %}

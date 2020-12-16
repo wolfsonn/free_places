@@ -6,8 +6,13 @@
 {% block site_content %}
     <h1>Create an Establishment</h1>
     <form method="POST" action="{% url 'create establishment' %}">
-            {{ form }}
-            {% csrf_token %}
-            <input type="submit" value="Create">
-        </form>
+        <div class="form-group">
+            Name: {{ form.name }}
+        </div>
+        <div class="form-group">
+            City: {{ form.city }}
+        </div>
+        {% csrf_token %}
+        <input type="submit" value="Create">
+    </form>
 {% endblock %}

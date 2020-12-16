@@ -5,6 +5,7 @@
 
 {% block site_content %}
     <h1>{{ city }} Details</h1>
+    <h4>These are the current facilities with allocated spaces in {{ city }}:</h4>
     <section>
         {% for establishment in city_green_establishments %}
             <div class="card">

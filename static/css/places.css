@@ -1,5 +1,14 @@
+a {
+    text-decoration: none;
+}
+
 li {
     list-style: none;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
 }
 
 .vacant {
@@ -10,10 +19,12 @@ li {
     color: red;
 }
 
-.timeout {
-    color: yellow;
+.on_hold {
+    color: orange;
 }
 
 .unknown {
     color: grey;
 }
+
+

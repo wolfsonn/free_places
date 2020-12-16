@@ -1,31 +1,22 @@
 {% extends 'shared/site.html' %}
+{% load django_tables2 %}
 {% block head_content %}
     <link rel="stylesheet" href="/static/css/establishments_cities.css">
 {% endblock %}
 
 {% block site_content %}
     <h1>{{ establishment }} Details</h1>
-    <section class="establishments">
-        {% for establishment in city_establishments %}
-            <div class="card">
-                <div class="card-icon">
-                    <a href=""></a>
-                    <i class="fas fa-hospital-alt vacant"></i>
-                </div>
-                <div class="card-text">
-                    {{ establishment }}
-                </div>
-            </div>
-        {% endfor %}
-        {% for city in red_cities %}
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-city not-vacant"></i>
-                </div>
-                <div class="card-text">
-                    {{ city }}
-                </div>
-            </div>
-        {% endfor %}
-    </section>
+    <h4>Places list:</h4>
+    {% render_table table %}
+    <h4>Contacts:</h4>
+    <div>
+        Address: {{ establishment.address }}
+    </div>
+    <div>
+        Phone: {{ establishment.phone }}
+    </div>
+    <div>
+        E-mail: {{ establishment.email }}
+    </div>
+
 {% endblock %}

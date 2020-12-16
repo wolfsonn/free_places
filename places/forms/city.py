@@ -1,6 +1,6 @@
 from django import forms
 
-from places.models import City
+from places.models.city import City
 
 
 class CityForm(forms.ModelForm):

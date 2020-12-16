@@ -1,6 +1,6 @@
 from django import forms
 
-from places.models import Establishment
+from places.models.establishment import Establishment
 
 
 class EstablishmentForm(forms.ModelForm):
