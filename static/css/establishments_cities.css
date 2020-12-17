@@ -15,6 +15,7 @@
     color: green;
 }
 
+.not-vacant,
 .occupied {
     color: red;
 }

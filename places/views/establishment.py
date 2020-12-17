@@ -31,7 +31,7 @@ def create_establishment(request):
         form = EstablishmentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('establishments_list.html')
+            return redirect('establishments')
 
         context = {
             'form': form,

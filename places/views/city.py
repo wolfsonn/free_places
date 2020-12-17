@@ -1,10 +1,12 @@
 from itertools import count
 
 from django.shortcuts import render, redirect
+from django_tables2 import RequestConfig
 
 from places.forms.city import CityForm
 from places.models.city import City
 from places.models.place import Place
+from places.tables import PlaceTable
 
 
 def cities_list(request):
@@ -49,10 +51,13 @@ def city_details(request, pk):
         [place.establishment for place in places if place.status == 'vacant' and place.establishment.city == city])
     city_red_establishments = set([place.establishment for place in places if
                                    place.status != 'vacant' and place.establishment.city == city and place.establishment not in city_green_establishments])
-
+    table = PlaceTable(Place.objects.filter(city_id=city))
+    table.paginate(page=request.GET.get("page", 1), per_page=25)
+    RequestConfig(request).configure(table)
     context = {
         'city_green_establishments': sorted(list(city_green_establishments)),
         'city_red_establishments': city_red_establishments,
         'city': city,
+        'table': table,
     }
     return render(request, 'city_details.html', context)

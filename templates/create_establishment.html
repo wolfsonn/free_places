@@ -7,10 +7,24 @@
     <h1>Create an Establishment</h1>
     <form method="POST" action="{% url 'create establishment' %}">
         <div class="form-group">
-            Name: {{ form.name }}
+            <div>Name:</div>
+            <div>{{ form.name }}</div>
         </div>
         <div class="form-group">
-            City: {{ form.city }}
+            <div> City:</div>
+            <div>{{ form.city }}</div>
+        </div>
+        <div class="form-group">
+            <div>Address:</div>
+            <div>{{ form.address }}</div>
+        </div>
+        <div class="form-group">
+            <div>Phone:</div>
+            <div>{{ form.phone }}</div>
+        </div>
+        <div class="form-group">
+            <div>E-mail:</div>
+            <div>{{ form.email }}</div>
         </div>
         {% csrf_token %}
         <input type="submit" value="Create">
