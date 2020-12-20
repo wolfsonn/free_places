@@ -8,8 +8,12 @@ The simple goal of the application is to make it easy to find a hospital place i
 management system whick would require more details and does not dive into the intricacies of hospital management. Application shows only cities and
 establishments with currently allocated places as to keep the application views simple and efficient.
 
-All the data is visible to unregistered users. Admin user can edit everything. The only users required to log in are establishment representatives that would 
-need to log in to allocate new places dedicated to the current pandemic, edit and delete these places.
+All the data is visible to unregistered users. Admin user can edit everything. The only users required to log in are establishment representatives that
+would need to log in to allocate new places dedicated to the current pandemic, edit and delete these places.
+
+Next up
+
+- custom form validation do avoid possible mistakes that will compromise reliability
 
 SoftUni project defense requirements are as follows:
 
