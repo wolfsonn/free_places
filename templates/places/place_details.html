@@ -1,0 +1,32 @@
+{% extends 'shared/site.html' %}
+{% block head_content %}
+    <link rel="stylesheet" href="/static/css/views.css">
+{% endblock %}
+{% block site_content %}
+    <h1>Place details:</h1>
+    <div>
+        <div class="view-group">
+            <div>Status: {{ place.status }}</div>
+        </div>
+        <div class="view-group">
+            <div>Room #: {{ place.room_number }}</div>
+        </div>
+        <div class="view-group">
+            <div>Floor #: {{ place.floor_number }}</div>
+        </div>
+        <div class="view-group">
+            <div>Establishment: {{ place.establishment }}</div>
+        </div>
+        <div class="view-group">
+            <div>City: {{ place.city }}</div>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="view-group">
+                <div>User: {{ place.user }}</div>
+            </div>
+        {% endif %}
+        {% if user.is_authenticated and user == place.user %}
+            <h4><a class="create" href="{% url 'edit place' place.pk %}">Edit place</a></h4>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,5 +1,4 @@
-from itertools import count
-
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, redirect
 from django_tables2 import RequestConfig
 
@@ -10,7 +9,6 @@ from places.tables import PlaceTable
 
 
 def cities_list(request):
-    # city_places = count(city.place_set)
     places = Place.objects.all()
     green_cities = sorted(list(set([place.establishment.city for place in places if place.status == 'vacant'])),
                           key=lambda city: city.name)
@@ -23,17 +21,19 @@ def cities_list(request):
         'green_cities': green_cities,
         'red_cities': red_cities,
     }
-    return render(request, 'cities_list.html', context)
+    return render(request, 'cities/cities_list.html', context)
 
 
+@staff_member_required
 def create_city(request):
     if request.method == 'GET':
         context = {
             'form': CityForm(),
         }
-        return render(request, 'create_city.html', context)
+        return render(request, 'cities/create_city.html', context)
     else:
         form = CityForm(request.POST)
+        form.user = request.user
         if form.is_valid():
             form.save()
             return redirect('cities')
@@ -41,7 +41,33 @@ def create_city(request):
         context = {
             'form': form,
         }
-        return render(request, 'create_city.html', context)
+        return render(request, 'cities/create_city.html', context)
+
+
+@staff_member_required
+def edit_city(request, pk):
+    city = City.objects.get(pk=pk)
+
+    if request.method == 'GET':
+        context = {
+            'city': city,
+            'form': CityForm(instance=city),
+        }
+
+        return render(request, 'cities/edit_city.html', context)
+    else:
+        form = CityForm(request.POST, instance=city)
+
+        if form.is_valid():
+            form.save()
+            return redirect('cities')
+
+        context = {
+            'city': city,
+            'form': form,
+        }
+
+        return render(request, 'cities/edit_city.html', context)
 
 
 def city_details(request, pk):
@@ -60,4 +86,4 @@ def city_details(request, pk):
         'city': city,
         'table': table,
     }
-    return render(request, 'city_details.html', context)
+    return render(request, 'cities/city_details.html', context)

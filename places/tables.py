@@ -14,4 +14,4 @@ class PlaceTable(tables.Table):
         model = Place
         template_name = 'django_tables2/bootstrap4.html'
         sequence = ('icon', 'status', 'room_number', 'floor_number', 'establishment', 'city')
-        exclude = ('id',)
+        exclude = ('id', 'user')

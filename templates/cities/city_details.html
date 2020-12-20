@@ -1,0 +1,41 @@
+{% extends 'shared/site.html' %}
+{% load django_tables2 %}
+{% block head_content %}
+    <link rel="stylesheet" href="/static/css/views.css">
+{% endblock %}
+
+{% block site_content %}
+    <h1>{{ city }} Details</h1>
+    {% if request.user.is_staff %}
+    <h4><a class="create" href="{% url 'create establishment' %}">Create establishment</a></h4>
+    <h4><a class="create" href="{% url 'edit city' city.pk %}">Edit city</a></h4>
+    {% endif %}
+    <h4>These are the current facilities with allocated places in {{ city }}:</h4>
+    <section>
+        {% for establishment in city_green_establishments %}
+            <div class="card">
+                <div class="card-icon">
+                    <a href=""></a>
+                    <a href="{% url 'establishment details' establishment.id %}"><i class="fas fa-hospital-alt vacant"></i></a>
+                </div>
+                <div class="card-text">
+                    {{ establishment }}
+                </div>
+            </div>
+        {% endfor %}
+        {% for establishment in city_red_establishments %}
+            <div class="card">
+                <div class="card-icon">
+                    <a href="{% url 'establishment details' establishment.id %}"><i class="fas fa-hospital-alt not-vacant"></i></a>
+                </div>
+                <div class="card-text">
+                    {{ establishment }}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    <section>
+    <h4>These are the current allocated places in {{ city.name }}:</h4>
+    {% render_table table %}
+    </section>
+{% endblock %}

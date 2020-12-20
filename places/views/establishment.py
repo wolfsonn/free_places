@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, redirect
 from django_tables2 import RequestConfig
 
@@ -17,16 +18,18 @@ def establishments_list(request):
     context = {
         'green_establishments': green_establishments,
         'red_establishments': red_establishments,
+        'places': places,
     }
-    return render(request, 'establishments_list.html', context)
+    return render(request, 'establishments/establishments_list.html', context)
 
 
+@staff_member_required
 def create_establishment(request):
     if request.method == 'GET':
         context = {
             'form': EstablishmentForm(),
         }
-        return render(request, 'create_establishment.html', context)
+        return render(request, 'establishments/create_establishment.html', context)
     else:
         form = EstablishmentForm(request.POST)
         if form.is_valid():
@@ -36,7 +39,33 @@ def create_establishment(request):
         context = {
             'form': form,
         }
-        return render(request, 'create_establishment.html', context)
+        return render(request, 'establishments/create_establishment.html', context)
+
+
+@staff_member_required()
+def edit_establishment(request, pk):
+    establishment = Establishment.objects.get(pk=pk)
+
+    if request.method == 'GET':
+        context = {
+            'establishment': establishment,
+            'form': EstablishmentForm(instance=establishment),
+        }
+
+        return render(request, 'establishments/edit_establishment.html', context)
+    else:
+        form = EstablishmentForm(request.POST, instance=establishment)
+
+        if form.is_valid():
+            form.save()
+            return redirect('establishments')
+
+        context = {
+            'establishment': establishment,
+            'form': form,
+        }
+
+        return render(request, 'establishments/edit_establishment.html', context)
 
 
 def establishment_details(request, pk):
@@ -48,4 +77,4 @@ def establishment_details(request, pk):
         'table': table,
         'establishment': establishment,
     }
-    return render(request, 'establishment_details.html', context)
+    return render(request, 'establishments/establishment_details.html', context)

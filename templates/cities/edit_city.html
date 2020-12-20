@@ -1,0 +1,17 @@
+{% extends 'shared/site.html' %}
+{% block head_content %}
+    <link rel="stylesheet" href="/static/css/forms.css">
+{% endblock %}
+
+{% block site_content %}
+    <h1>Edit City</h1>
+    <form method="POST" action="{% url 'edit city' city.pk %}">
+        <div class="form-group err">{{ form.errors }}</div>
+        <div class="form-group">
+            <div>Name:</div>
+            <div>{{ form.name }}</div>
+        </div>
+        {% csrf_token %}
+        <input type="submit" value="Edit">
+    </form>
+{% endblock %}

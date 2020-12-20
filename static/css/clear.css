@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+a {
+    color: red;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(62, 68, 71);
+}
+
+
+h1,
+h4,
+h5 {
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+}

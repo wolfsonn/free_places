@@ -1,0 +1,22 @@
+{% extends 'shared/site.html' %}
+{% block head_content %}
+    <link rel="stylesheet" href="/static/css/forms.css">
+{% endblock %}
+{% block site_content %}
+    <div>
+        <form method="post" action="{% url 'login' %}">
+            <h1>Sign in</h1>
+            <div class="form-group">
+                <div>Username:</div>
+                <div>{{ form.username }}</div>
+            </div>
+            <div class="form-group">
+                <div>Password:</div>
+                <div>{{ form.password }}</div>
+            </div>
+            {% csrf_token %}
+            <input type="submit" value="Sign in">
+            <div class="form-group">Don't have an account? <a href="{% url 'signup user' %}">Sign up here</a></div>
+        </form>
+    </div>
+{% endblock %}

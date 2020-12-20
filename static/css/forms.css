@@ -1,0 +1,91 @@
+.form-group
+{
+    margin: auto;
+    width: 40%;
+}
+
+select,
+input,
+button {
+    width: 100%;
+    min-width: 250px;
+}
+
+input[value=Login],
+input[value~=Sign],
+input[value=Create],
+input[value=Edit],
+input[value=Upload] {
+    display: block;
+    margin: 10px auto;
+    width: 40%;
+
+    border: 1px red;
+    border-radius: 5px;
+    background-color: white;
+    color: red;
+}
+
+input[value=Login]:hover,
+input[value~=Sign]:hover,
+input[value=Create]:hover,
+input[value=Edit]:hover,
+input[value=Upload]:hover {
+    background-color: red;
+    color: white;
+}
+
+input[type=file] {
+    display: block;
+    justify-content: center;
+    margin: auto;
+    width: 40%;
+}
+
+a {
+    color: red;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(62, 68, 71);
+}
+
+.err {
+    color: blue;
+}
+
+.create {
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+
+    border: solid 1px red;
+    border-radius: 5px;
+    background-color: white;
+    color: red;
+
+    text-align: center;
+}
+
+.create:hover {
+    background-color: red;
+    color: white;
+}
+
+.vacant {
+    color: green;
+}
+
+.not-vacant,
+.occupied {
+    color: red;
+}
+
+.on_hold {
+    color: orange;
+}
+
+.unknown {
+    color: grey;
+}

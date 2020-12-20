@@ -1,0 +1,13 @@
+{% extends 'shared/site.html' %}
+{% load django_tables2 %}
+{% block head_content %}
+    <link rel="stylesheet" href="/static/css/views.css">
+{% endblock %}
+{% block site_content %}
+    <h1>Places Overview</h1>
+    {%  if user.is_authenticated and user == place.user %}
+    <h4><a class="create" href="{% url 'create place' %}">Create place</a></h4>
+    {% endif %}
+    <h4>These are all currently allocated places:</h4>
+    {% render_table table %}
+{% endblock %}
